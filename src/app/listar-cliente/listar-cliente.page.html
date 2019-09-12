@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Lista_de_Clientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+     
+          <div *ngIf="!loading">
+              <ion-card *ngFor="let cliente of ListarCliente">
+                <ion-item>
+                  <ion-icon (click)="edit(cliente)" color="blue" name="create" slot="end"></ion-icon>
+                  <ion-icon (click)="remove(cliente.uid)" color="danger" name="trash" slot="end"></ion-icon>
+                  <ion-label>{{ cliente.nome }}</ion-label>
+                </ion-item>
+              
+                <ion-card-content>
+                  {{ cliente.email }}
+                </ion-card-content>
+              </ion-card>
+            </div>
+      
+  </ion-content>
