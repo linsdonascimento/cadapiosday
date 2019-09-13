@@ -20,14 +20,16 @@ export class CadastroClientePage implements OnInit {
     private router: Router,
     private afAuth: AngularFireAuth,
     public ToastController: ToastController,
-    private dbService: DBService) { this.CadastroCliente = new cliente}
+    private dbService: DBService) { 
+      this.CadastroCliente = new cliente
+    }
 
     ngOnInit() {
     }
   
     salvar() {
-      this.afAuth.auth.createUserWithEmailAndPassword(this.CadastroCliente.nome,this.CadastroCliente.email)
-      this.dbService.insertInList<cliente>('cliente',this.CadastroCliente)
+      this.afAuth.auth.createUserWithEmailAndPassword(this.CadastroCliente.email,this.CadastroCliente.senha)
+      this.dbService.insertInList<cliente>('clientes',this.CadastroCliente)
       .then(result => {
         this.presentToast('Cliente Cadastrado com sucesso');
         this.backToLogin();    
@@ -49,7 +51,7 @@ export class CadastroClientePage implements OnInit {
       }
   
       backToLogin() {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/login']);
         }
   
   }

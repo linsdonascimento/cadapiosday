@@ -21,7 +21,7 @@ export class HomePage {
   ) { this.cliente = new cliente}
 
   login() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.cliente.nome, this.cliente.email)
+    this.afAuth.auth.signInWithEmailAndPassword(this.cliente.email, this.cliente.senha)
       .then(result => {
         this.router.navigate(['/listar-cliente']);
       }).catch(() => {

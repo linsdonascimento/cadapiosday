@@ -21,10 +21,10 @@ export class ListarClientePage implements OnInit {
   async ngOnInit() {
     this.loading = true;
 
-    await this.LoadingListaAlunos();
+    await this.LoadingListarCliente();
   }
   
-  private async LoadingListaAlunos() {
+  private async LoadingListarCliente() {
     this.dbService.listWithUIDs<cliente>('/cliente')
       .then(_ListaAlunosPage => {
         this.ListaClientes = _ListaAlunosPage;
@@ -55,14 +55,14 @@ export class ListarClientePage implements OnInit {
 
   private confirmAdd() {
     this.presentToast('Contato adicionado com sucesso');
-    this.LoadingListaAlunos();
+    this.LoadingListarCliente();
   }
 
   remove(uid: string) {
     this.dbService.remove('/cliente', uid)
       .then(() => {
         this.presentToast('Contato removido com sucesso');
-        this.LoadingListaAlunos();
+        this.LoadingListarCliente();
       });
   }
 
