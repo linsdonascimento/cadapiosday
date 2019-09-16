@@ -15,37 +15,40 @@ export class LoginPage implements OnInit {
 
   Cliente : cliente;
 
-  constructor(
-    private router: Router,
-    private afAuth: AngularFireAuth,
-    public toastController: ToastController,
-    public service: DBService
-  ) { 
-    this.Cliente = new cliente
-  }
+  constructor(private router: Router,  private toastCtrl: ToastController,
+    private afa:AngularFireAuth,
+    private database: DBService) {
 
+      this.Cliente = new cliente
+      
+  }
   ngOnInit() {
   }
+
   async login() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.Cliente.email, this.Cliente.senha)
-    .then(result => {
+
+    try {
+      
       this.router.navigate(['/listar-cliente']);
-    }).catch(error => {
-      this.presentToast('E-mail e/ou senha inválido(s).');
-      delete this.Cliente
-    });
+      this.afa.auth.signInWithEmailAndPassword(this.Cliente.email,this.Cliente.senha);
+    
+
+    } catch (error) {
+      this.presentToast(error.message);
+
+    } 
   }
 
+  
+
   async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000
-    });
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
 
-  newCliente() {
-    this.router.navigate(['/cadastro-cliente']);
+  cadastrar() {
+    this.router.navigate(['/cadastro-cliente'])
   }
+
 
 }

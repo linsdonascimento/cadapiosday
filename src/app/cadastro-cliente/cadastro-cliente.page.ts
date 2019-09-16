@@ -29,7 +29,7 @@ export class CadastroClientePage implements OnInit {
   
     salvar() {
       this.afAuth.auth.createUserWithEmailAndPassword(this.CadastroCliente.email,this.CadastroCliente.senha)
-      this.dbService.insertInList<cliente>('clientes',this.CadastroCliente)
+      this.dbService.insertInList<cliente>('cliente',this.CadastroCliente)
       .then(result => {
         this.presentToast('Cliente Cadastrado com sucesso');
         this.backToLogin();    
