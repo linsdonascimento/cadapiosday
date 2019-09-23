@@ -21,8 +21,12 @@ export class ListarClientePage implements OnInit {
   loading: any;
 
 
-  constructor(public router: Router, private database: DBService, public modalController: ModalController,
-    private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(
+    public router: Router, 
+    private database: DBService, 
+    public modalController: ModalController,
+    private loadingCtrl: LoadingController, 
+    private toastCtrl: ToastController) {
 
   }
 

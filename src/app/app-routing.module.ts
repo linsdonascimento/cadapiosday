@@ -7,6 +7,11 @@ const routes: Routes = [
   { path: 'cadastro-cliente', loadChildren: './cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule' },
   { path: 'listar-cliente', loadChildren: './listar-cliente/listar-cliente.module#ListarClientePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'cardapio', loadChildren: './cardapio/cardapio.module#CardapioPageModule' },
+  { path: 'cadastro-prato', loadChildren: './cadastro-prato/cadastro-prato.module#CadastroPratoPageModule' },
+  { path: 'cadastro-bebida', loadChildren: './cadastro-bebida/cadastro-bebida.module#CadastroBebidaPageModule' },
+  { path: 'lista-prato', loadChildren: './lista-prato/lista-prato.module#ListaPratoPageModule' },
+  { path: 'lista-bebidas', loadChildren: './lista-bebidas/lista-bebidas.module#ListaBebidasPageModule' },
 ];
 
 @NgModule({

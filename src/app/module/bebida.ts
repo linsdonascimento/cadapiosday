@@ -1,5 +1,7 @@
 export class bebida{
-    tipobebida:String;
+    Id:String;
+    nome:String;
     descricao:String;
     valor:String;
+    categoriaId: String;
 }
