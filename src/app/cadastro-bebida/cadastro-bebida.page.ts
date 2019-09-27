@@ -15,7 +15,7 @@ export class CadastroBebidaPage implements OnInit {
 
   CadastrarBebida: bebida
 
-  Bebidas: bebida[]
+  bebidas: bebida[]
 
   constructor(
     private router: Router,
@@ -23,16 +23,16 @@ export class CadastroBebidaPage implements OnInit {
     public ToastController: ToastController,
     private dbService: DBService,
     
-  ) { }
+  ) { this.CadastrarBebida = new bebida}
 
   ngOnInit() {
   }
 
   AddBebida(){
-    this.dbService.insertInList<bebida>('Bebidas', this.CadastrarBebida)
+    this.dbService.insertInList('bebidas', this.CadastrarBebida)
     .then(result => {
       this.presentToast('Cadastrado');
-      this.backToCardapio();    
+      this.backToCardapio(); 
       
       })
       .catch(error => {

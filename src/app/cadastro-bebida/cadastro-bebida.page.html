@@ -1,9 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cadastro-bebida</ion-title>
+    <ion-title>Cadastrar Bebidas</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="backToCardapio()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+    <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="CadastrarBebida.nome" placeholder="nome"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="CadastrarBebida.descricao" placeholder="descricao"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="CadastrarBebida.valor" placeholder="valor"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-footer>
+          
+            <ion-toolbar>
+              <ion-button (click)="AddBebida()">Cadastrar</ion-button>
+            </ion-toolbar>
+        </ion-footer>
+          
   
 </ion-content>
+

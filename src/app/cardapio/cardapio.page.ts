@@ -40,4 +40,8 @@ export class CardapioPage implements OnInit {
     this.router.navigate(['/lista-bebidas'])
   }
 
+  listarClientes(){
+    this.router.navigate(['/listar-cliente'])
+  }
+
 }

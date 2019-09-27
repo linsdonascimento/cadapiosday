@@ -111,7 +111,7 @@ export class ListarClientePage implements OnInit {
 
   
   lista() {
-    this.router.navigate(['/listaCliente'])
+    this.router.navigate(['/cardapio'])
   }
 
 
