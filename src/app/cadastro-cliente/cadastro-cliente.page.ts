@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { cliente } from '../module/cliente';
 import { Router } from '@angular/router';
 import { DBService } from '../service/db.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -14,10 +14,13 @@ export class CadastroClientePage implements OnInit {
 
   CadastroCliente : cliente
 
-  clientes: cliente[];
+  editaCliente: cliente
+
+  clientes: cliente[]
 
   constructor(
     private router: Router,
+    public ModalController: ModalController,
     private afAuth: AngularFireAuth,
     public ToastController: ToastController,
     private dbService: DBService) { 
@@ -25,12 +28,16 @@ export class CadastroClientePage implements OnInit {
     }
 
     ngOnInit() {
+      if(this.editaCliente){
+        this.CadastroCliente = this.editaCliente
+      }
     }
   
     salvar() {
       this.afAuth.auth.createUserWithEmailAndPassword(this.CadastroCliente.email,this.CadastroCliente.senha)
       this.dbService.insertInList<cliente>('cliente',this.CadastroCliente)
       .then(result => {
+        this.CadastroCliente = new cliente
         this.presentToast('Cliente Cadastrado com sucesso');
         this.backToLogin();    
         

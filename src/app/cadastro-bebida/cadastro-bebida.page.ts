@@ -15,6 +15,8 @@ export class CadastroBebidaPage implements OnInit {
 
   CadastrarBebida: bebida
 
+  editarbebida: bebida
+
   bebidas: bebida[]
 
   constructor(
@@ -26,11 +28,15 @@ export class CadastroBebidaPage implements OnInit {
   ) { this.CadastrarBebida = new bebida}
 
   ngOnInit() {
+    if(this.editarbebida){
+      this.CadastrarBebida = this.editarbebida
+    }
   }
 
   AddBebida(){
     this.dbService.insertInList('bebidas', this.CadastrarBebida)
     .then(result => {
+      this.CadastrarBebida = new bebida
       this.presentToast('Cadastrado');
       this.backToCardapio(); 
       

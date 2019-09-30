@@ -1,4 +1,4 @@
 export class categoria{
-    id:string;
+    uid:string;
     categoria:string;
 }

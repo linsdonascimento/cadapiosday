@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
 
     try {
       
-      this.router.navigate(['/listar-cliente']);
+      this.router.navigate(['/opcao']);
       this.afa.auth.signInWithEmailAndPassword(this.Cliente.email,this.Cliente.senha);
     
 

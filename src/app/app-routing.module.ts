@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'cadastro-bebida', loadChildren: './cadastro-bebida/cadastro-bebida.module#CadastroBebidaPageModule' },
   { path: 'lista-prato', loadChildren: './lista-prato/lista-prato.module#ListaPratoPageModule' },
   { path: 'lista-bebidas', loadChildren: './lista-bebidas/lista-bebidas.module#ListaBebidasPageModule' },
+  { path: 'opcao', loadChildren: './opcao/opcao.module#OpcaoPageModule' },
 ];
 
 @NgModule({

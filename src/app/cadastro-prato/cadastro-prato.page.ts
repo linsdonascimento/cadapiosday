@@ -15,6 +15,8 @@ export class CadastroPratoPage implements OnInit {
 
   CadastroCardapio: cardapio
 
+  editarprato: cardapio
+
   Cardapios: cardapio[]
 
   constructor(
@@ -25,12 +27,16 @@ export class CadastroPratoPage implements OnInit {
   ) { this.CadastroCardapio = new cardapio }
 
   ngOnInit() {
+    if (this.editarprato){
+      this.CadastroCardapio = this.editarprato
+    }
   }
 
   addPrato(){
 
     this.dbService.insertInList('cardapio',this.CadastroCardapio)
       .then(result=>{
+        this.CadastroCardapio = new cardapio
         this.presentToast('Cadastrado');
         this.backToCardapio(); 
       

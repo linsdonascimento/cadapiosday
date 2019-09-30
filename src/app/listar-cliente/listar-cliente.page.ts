@@ -4,6 +4,7 @@ import { ModalController, ToastController, LoadingController } from '@ionic/angu
 import { DBService } from '../service/db.service';
 import { Router } from '@angular/router';
 import { CadastroClientePage } from '../cadastro-cliente/cadastro-cliente.page';
+import { categoria } from '../module/categoria';
 
 
 
@@ -19,11 +20,12 @@ export class ListarClientePage implements OnInit {
   clientes: cliente[];
   carregando = true;
   loading: any;
+  categoriacliente: categoria[]
 
 
   constructor(
     public router: Router, 
-    private database: DBService, 
+    private dbService: DBService, 
     public modalController: ModalController,
     private loadingCtrl: LoadingController, 
     private toastCtrl: ToastController) {
@@ -39,7 +41,7 @@ export class ListarClientePage implements OnInit {
   }
 
   private async carregarClientes() {
-    this.database.list<cliente>('/cliente')
+    this.dbService.listWithUIDs<cliente>('/cliente')
       .then(clientes => {
         this.clientes = clientes;
         this.carregando = false;
@@ -50,10 +52,11 @@ export class ListarClientePage implements OnInit {
   }
 
   remove(uid: string) {
-    this.database.remove('/cliente', uid)
+    this.dbService.remove('/cliente', uid)
       .then(() => {
         alert('Cliente removido com sucesso');
-        this.carregarClientes();
+        this.carregarClientes()
+        this.presentLoading()
       });
   }
   
@@ -62,7 +65,7 @@ export class ListarClientePage implements OnInit {
     const modal = await this.modalController.create({
       component: CadastroClientePage,
       componentProps: {
-        editingCliente: clientes
+        editaCliente: clientes
       }
     });
 
@@ -111,7 +114,7 @@ export class ListarClientePage implements OnInit {
 
   
   lista() {
-    this.router.navigate(['/cardapio'])
+    this.router.navigate(['/listar-cliente'])
   }
 
 
