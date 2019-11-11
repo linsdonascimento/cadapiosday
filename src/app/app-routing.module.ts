@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'lista-prato', loadChildren: './lista-prato/lista-prato.module#ListaPratoPageModule' },
   { path: 'lista-bebidas', loadChildren: './lista-bebidas/lista-bebidas.module#ListaBebidasPageModule' },
   { path: 'opcao', loadChildren: './opcao/opcao.module#OpcaoPageModule' },
+  { path: 'pedido', loadChildren: './pedido/pedido.module#PedidoPageModule' },
 ];
 
 @NgModule({

@@ -2,6 +2,6 @@ export class bebida{
     uid:String;
     nome:String;
     descricao:String;
-    valor:String;
+    valor:Number;
     categoriauid:String;
 }

@@ -4,6 +4,7 @@ export class cliente{
     email: string;
     senha:string;
     Adressuid:String;
+    perfilUID: string;
 
 }
 
@@ -13,4 +14,10 @@ export class Adress{
     estado:String;
     descricao:String;
 
+}
+
+export class perfil{
+    uid: string;
+    description: string;
+    isAdmin: boolean;
 }
