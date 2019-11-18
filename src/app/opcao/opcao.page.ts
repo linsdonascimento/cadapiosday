@@ -22,5 +22,8 @@ export class OpcaoPage implements OnInit {
 configCardapio(){
   this.router.navigate(['/cardapio'])
 }
+Pedido(){
+  this.router.navigate(['/pedido'])
+}
 
 }

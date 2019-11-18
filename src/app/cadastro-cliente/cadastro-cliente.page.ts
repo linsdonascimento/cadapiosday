@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { cliente } from '../module/cliente';
+import { cliente, perfil } from '../module/cliente';
 import { Router } from '@angular/router';
 import { DBService } from '../service/db.service';
 import { ToastController, ModalController } from '@ionic/angular';
@@ -14,6 +14,8 @@ export class CadastroClientePage implements OnInit {
 
   CadastroCliente : cliente
 
+  newPerfil: perfil;
+
   editaCliente: cliente
 
   clientes: cliente[]
@@ -25,6 +27,7 @@ export class CadastroClientePage implements OnInit {
     public ToastController: ToastController,
     private dbService: DBService) { 
       this.CadastroCliente = new cliente
+      this.newPerfil = new perfil()
     }
 
     ngOnInit() {
@@ -56,6 +59,7 @@ export class CadastroClientePage implements OnInit {
         });
         toast.present();
       }
+      
   
       backToLogin() {
           this.router.navigate(['/login']);

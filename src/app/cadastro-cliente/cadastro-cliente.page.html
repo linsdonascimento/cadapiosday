@@ -25,6 +25,11 @@
           <ion-label position="floating">Digite uma Senha</ion-label>
           <ion-input type="password" [(ngModel)]="CadastroCliente.senha"></ion-input>
         </ion-item>
+
+        <ion-input [(ngModel)]="newPerfil.description" placeholder="Digite a descrição"></ion-input>
+  
+        <ion-toggle [(ngModel)]="newPerfil.isAdmin" color="primary"></ion-toggle> Administrador?
+
     </div>
       <ion-row>
         <ion-button (click)="salvar()"> Salvar </ion-button>

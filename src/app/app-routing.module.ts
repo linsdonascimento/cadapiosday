@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'cadastro-cliente', loadChildren: './cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule' },
   { path: 'listar-cliente', loadChildren: './listar-cliente/listar-cliente.module#ListarClientePageModule' },
@@ -14,6 +14,8 @@ const routes: Routes = [
   { path: 'lista-bebidas', loadChildren: './lista-bebidas/lista-bebidas.module#ListaBebidasPageModule' },
   { path: 'opcao', loadChildren: './opcao/opcao.module#OpcaoPageModule' },
   { path: 'pedido', loadChildren: './pedido/pedido.module#PedidoPageModule' },
+  { path: 'edit-user', loadChildren: './edit-user/edit-user.module#EditUserPageModule' },
+  
 ];
 
 @NgModule({
