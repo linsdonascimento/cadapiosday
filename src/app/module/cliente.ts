@@ -1,18 +1,19 @@
 export class cliente{
-    uid:String;
+    uid: string;
     nome: string;
     email: string;
-    senha:string;
-    Adressuid:String;
+    senha: string;
+    photo: string;
+    Adressuid: string;
     perfilUID: string;
 
 }
 
 export class Adress{
-    uid:String;
-    cidade:String;
-    estado:String;
-    descricao:String;
+    uid:string;
+    cidade:string;
+    estado:string;
+    descricao:string;
 
 }
 

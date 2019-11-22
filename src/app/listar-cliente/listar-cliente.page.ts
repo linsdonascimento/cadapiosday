@@ -5,6 +5,7 @@ import { DBService } from '../service/db.service';
 import { Router } from '@angular/router';
 import { CadastroClientePage } from '../cadastro-cliente/cadastro-cliente.page';
 import { categoria } from '../module/categoria';
+import { EditUserPage } from '../edit-user/edit-user.page';
 
 
 
@@ -16,7 +17,7 @@ import { categoria } from '../module/categoria';
 })
 export class ListarClientePage implements OnInit {
 
-
+  editarCliente: EditUserPage;
   clientes: cliente[];
   carregando = true;
   loading: any;
@@ -59,26 +60,7 @@ export class ListarClientePage implements OnInit {
         this.presentLoading()
       });
   }
-  
 
-  async editar(clientes: cliente) {
-    const modal = await this.modalController.create({
-      component: CadastroClientePage,
-      componentProps: {
-        editaCliente: clientes
-      }
-    });
-
-    modal.onDidDismiss()
-      .then(result => {
-        if (result.data) {
-
-        }
-      });
-
-      
-    return  await modal.present();
-  }
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Por favor,aguarde...' });

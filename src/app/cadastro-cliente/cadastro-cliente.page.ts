@@ -9,6 +9,7 @@ import { ToastController, ModalController } from '@ionic/angular';
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.page.html',
   styleUrls: ['./cadastro-cliente.page.scss'],
+  providers:[DBService]
 })
 export class CadastroClientePage implements OnInit {
 

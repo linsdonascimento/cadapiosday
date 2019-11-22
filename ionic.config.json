@@ -1,5 +1,7 @@
 {
   "name": "cardapiosday",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

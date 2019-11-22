@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edit-user</ion-title>
+    <ion-title>Editar Usuário</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="photo-row">
+      <div (click)="takePicture()">
+        <ion-icon *ngIf="!editarCliente.photo" name="cliente"></ion-icon>
+        <ion-img  *ngIf="editarCliente.photo" [src]="editarCliente.photo"></ion-img>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-input [(ngModel)]="editarCliente.name" placeholder="Digite o nome"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-input [disabled]="true" [(ngModel)]="editarCliente.email" placeholder="Digite o e-mail"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label>Perfil</ion-label>
+        <ion-select [(ngModel)]="editarCliente.perfilUID" placeholder="Selecione">
+          <ion-select-option *ngFor="let perfil of perfis" [value]="perfil.uid">{{perfil.description}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+        <ion-button [disabled]="!editarCliente.nome || editarCliente.perfilUID" (click)="save()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

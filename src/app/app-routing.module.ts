@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'opcao', loadChildren: './opcao/opcao.module#OpcaoPageModule' },
   { path: 'pedido', loadChildren: './pedido/pedido.module#PedidoPageModule' },
   { path: 'edit-user', loadChildren: './edit-user/edit-user.module#EditUserPageModule' },
+  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
   
 ];
 

@@ -40,28 +40,15 @@ export class PedidoPage implements OnInit {
     for (let obj of items) {
       if (selected[obj.uid]) {
         selected[obj.uid].quantidade++;
-        selected[obj.userId]
+        
       } else {
         selected[obj.uid] = {...obj, quantidade: 1};
       }
     }
     this.selectedItems = Object.keys(selected).map(key => selected[key])
-    this.total = this.selectedItems.reduce((a, b) => a + (b.quantidade * b.preco), 0);
+    this.total = this.selectedItems.reduce((a, b) => a + (b.quantidade * b.valor), 0);
   
   }
-
-  async finalizado(){
-    await this.presentLoading();
-    this.database.insert('pedido',this.selectedItems)
-        .then(() =>{
-          this.presentToast('Produto solicitado com sucesso !');
-          this.router.navigate(['/opcao']);
-          this.novoPedido = new pedidos();
-          this.loading.dismiss();
-        })
-
-  }
-
     
   async escolher(){
     this.database.list<cardapio>('/cardapio')
@@ -77,6 +64,20 @@ export class PedidoPage implements OnInit {
 
 
   }
+
+  async finalizado(){
+    await this.presentLoading();
+    this.database.insert('pedido',this.selectedItems)
+        .then(() =>{
+          this.presentToast('Produto solicitado com sucesso !');
+          this.router.navigate(['/opcao']);
+          this.novoPedido = new pedidos();
+          this.loading.dismiss();
+        })
+
+  }
+
+  
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Por favor, aguarde ...' });
     return this.loading.present();

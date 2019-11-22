@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { cliente } from '../module/cliente';
+import { cliente, perfil } from '../module/cliente';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastController } from '@ionic/angular';
@@ -14,12 +14,14 @@ import { DBService } from '../service/db.service';
 export class LoginPage implements OnInit {
 
   Cliente : cliente;
+  perfil : perfil;
 
   constructor(private router: Router,  private toastCtrl: ToastController,
     private afa:AngularFireAuth,
     private database: DBService) {
 
       this.Cliente = new cliente
+    
       
   }
   ngOnInit() {
@@ -31,6 +33,7 @@ export class LoginPage implements OnInit {
       
       this.router.navigate(['/opcao']);
       this.afa.auth.signInWithEmailAndPassword(this.Cliente.email,this.Cliente.senha);
+    
     
 
     } catch (error) {

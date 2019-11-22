@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { cliente } from '../module/cliente';
 import { Route, } from '@angular/compiler/src/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastController, NavController } from '@ionic/angular';
 import { DBService } from '../service/db.service';
+import { CarService } from '../service/pedidos.service';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +12,38 @@ import { DBService } from '../service/db.service';
   styleUrls: ['home.page.scss'],
   providers:[DBService]
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  
 
-  cliente : cliente;
+  cart = []
+  items;
 
-  constructor(
-    private router: Route,
-    private afAuth: AngularFireAuth,
-    public toastController: ToastController, 
+  sliderConfig = {
 
-  ) { this.cliente = new cliente}
-
-  login() {
-    
   }
 
- 
+  constructor(
+     private cartService: CarService,
+     private router: Route,
+
+    
+
+  ) { }
+
+  ngOnInit(): void {
+    this.cart = this.cartService.getCart();
+    this.items = this.cartService.getProdutos();
+  }
+
+  adcionaPedido(products){
+
+    this.cartService.addProdutos(products)
+
+  }
+
+  fazerPedidos(){
+    this.router.navigate(['pedido']);
+  }
   
 
 }
